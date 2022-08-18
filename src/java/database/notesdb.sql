@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS `notesdb`.`user` (
   `last_name` VARCHAR(20) NOT NULL,
   `password` VARCHAR(20) NOT NULL,
   `role` INT(11) NOT NULL,
+  `reset_password_uuid` VARCHAR(50),
   PRIMARY KEY (`email`),
   CONSTRAINT `fk_user_role`
     FOREIGN KEY (`role`)
@@ -36,11 +37,11 @@ INSERT INTO `role` VALUES
 (2, 'regular user');
 
 INSERT INTO `user` (`email`,`active`,`first_name`,`last_name`,`password`,`role`) VALUES
-('your_gmail_address_here+admin@gmail.com', true, 'Admin','Admin', 'password', 1),
-('your_gmail_address_here+anne@gmail.com', true, 'Anne','Annerson', 'password', 2),
-('your_gmail_address_here+barb@gmail.com', true, 'Barb','Barber', 'password', 2);
+('saitcprg352three+admin@gmail.com', true, 'Admin','Admin', 'password', 1),
+('saitcprg352three+anne@gmail.com', true, 'Anne','Annerson', 'password', 2),
+('saitcprg352three+barb@gmail.com', true, 'Barb','Barber', 'password', 2);
 
 INSERT INTO `note` (`Title`, `Contents`, `Owner`) VALUES
-('Quote #1', 'Writing is nature''s way of letting you know how sloppy your thinking is.', 'your_gmail_address_here+anne@gmail.com'),
-('Another quote', '"Java is to JavaScript as ham is to hamster." -  Jeremy Keith', 'your_gmail_address_here+anne@gmail.com'),
-('Barb''s Note', 'Anne should not see this note.', 'your_gmail_address_here+barb@gmail.com');
+('Quote #1', 'Writing is nature''s way of letting you know how sloppy your thinking is.', 'saitcprg352three+anne@gmail.com'),
+('Another quote', '"Java is to JavaScript as ham is to hamster." -  Jeremy Keith', 'saitcprg352three+anne@gmail.com'),
+('Barb''s Note', 'Anne should not see this note.', 'saitcprg352three+barb@gmail.com');

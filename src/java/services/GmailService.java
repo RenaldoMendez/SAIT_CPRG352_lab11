@@ -59,21 +59,21 @@ public class GmailService {
         props.put("mail.smtps.port", 465);
         props.put("mail.smtps.auth", "true");
         props.put("mail.smtps.quitwait", "false");
-        Session session = Session.getDefaultInstance(props);
-        session.setDebug(true);
+        Session session = Session.getDefaultInstance(props);//setup a mail session
+        session.setDebug(true);//sends any issues with mail sessions or sending mail it logs them to a log file
 
         // create a message
         Message message = new MimeMessage(session);
         message.setSubject(subject);
         if (bodyIsHTML) {
-            message.setContent(body, "text/html");
+            message.setContent(body, "text/html");//can use html to markup your messages add formatting
         } else {
             message.setText(body);
         }
 
         // address the message
         Address fromAddress = new InternetAddress(username);
-        Address toAddress = new InternetAddress(to);
+        Address toAddress = new InternetAddress(to);  
         message.setFrom(fromAddress);
         message.setRecipient(Message.RecipientType.TO, toAddress);
 
