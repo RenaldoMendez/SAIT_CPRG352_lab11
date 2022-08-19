@@ -18,13 +18,13 @@ public class UserDB {
             em.close();
         }
     }
-    
-    public User getByUUID(String Uuid) throws Exception {
-        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+
+    public User getByUUID(String Uuid) {
+            EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        
         try {
-            //User user = (User) em.createNamedQuery("User.findByResetPasswordUuid", User.class).getResultList();
-            List<User> userList = em.createNamedQuery("User.findByResetPasswordUuid", User.class).setParameter(1,Uuid).getResultList();
-            return userList.get(0);
+            User user = em.createNamedQuery("User.findByResetPasswordUuid", User.class).setParameter("resetPasswordUuid", Uuid).getSingleResult();
+            return user;
         } finally {
             em.close();
         }
