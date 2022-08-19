@@ -1,5 +1,6 @@
 package dataaccess;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import models.Role;
@@ -21,8 +22,9 @@ public class UserDB {
     public User getByUUID(String Uuid) throws Exception {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         try {
-            User user = (User) em.createNamedQuery("User.findByResetPasswordUuid", User.class).getResultList();
-            return user;
+            //User user = (User) em.createNamedQuery("User.findByResetPasswordUuid", User.class).getResultList();
+            List<User> userList = em.createNamedQuery("User.findByResetPasswordUuid", User.class).setParameter(1,Uuid).getResultList();
+            return userList.get(0);
         } finally {
             em.close();
         }
